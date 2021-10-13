@@ -1,51 +1,50 @@
 ﻿using System.ComponentModel;
 
-
 namespace P2_2_1 {
-    class Producto : INotifyPropertyChanged {
-        private string nombreProducto;
-        private int codigoProducto;
-        private int codigoVendedor;
-        private double precioVenta;
+    class Dependiente : INotifyPropertyChanged {
+        private string nombreDependiente;
+        private int codigoDependiente;
+        private string fechaNacimiento;
+        private int edad;
         private string imagen;
 
-        public string NombreProducto {
+        public string NombreDependiente {
             get {
-                return nombreProducto;
+                return nombreDependiente;
             }
             set {
-                nombreProducto = value;
-                OnPropertyChanged("NombreProducto");
+                nombreDependiente = value;
+                OnPropertyChanged("NombreDependiente");
             }
         }
 
-        public int CodigoProducto {
+        public int CodigoDependiente {
             get {
-                return codigoProducto;
+                return codigoDependiente;
             }
             set {
-                codigoProducto = value;
-                OnPropertyChanged("CodigoProducto");
+                codigoDependiente = value;
+                OnPropertyChanged("CodigoDependiente");
             }
         }
 
-        public int CodigoVendedor {
+        public string FechaNacimiento {
             get {
-                return codigoVendedor;
+                return fechaNacimiento;
             }
             set {
-                codigoVendedor = value;
-                OnPropertyChanged("CodigoVendedor");
+                fechaNacimiento = value;
+                OnPropertyChanged("FechaNacimiento");
             }
         }
 
-        public double PrecioVenta {
+        public int Edad {
             get {
-                return precioVenta;
+                return edad;
             }
             set {
-                precioVenta = value;
-                OnPropertyChanged("PrecioVenta");
+                edad = value;
+                OnPropertyChanged("Edad");
             }
         }
 

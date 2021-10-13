@@ -5,87 +5,139 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:P2_2_1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="808">
-    <Grid >
-        <TabControl Height="419" VerticalAlignment="Top">
-            <TabItem Header="Productos" FontFamily="Segoe UI">
-                <ScrollViewer CanContentScroll="True">
-                    <Grid Background="#FFE5E5E5" Margin="0 0 0 20">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <ListView Name="UserGrid" Grid.Row="1" Margin="4,178,12,13"  ItemsSource="{Binding Articulos}">
-                            <ListView.View>
-                                <GridView x:Name="grdTest">
-                                    <GridViewColumn Header="Codigo" DisplayMemberBinding="{Binding CodigoProducto}"  Width="50"/>
-                                    <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding NombreProducto}"  Width="80" />
-                                    <GridViewColumn Header="Precio" DisplayMemberBinding="{Binding PrecioVenta}" Width="100" />
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-                        <Label Content="CodigoProducto:" Grid.Row="1" HorizontalAlignment="Left" Margin="12,7,0,346" Name="label1" />
-                        <Label Content="First Name" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="12,35,0,0" Name="label3" VerticalAlignment="Top" />
-                        <Label Content="Last Name" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="12,60,0,0" Name="label2" VerticalAlignment="Top" />
-                        <Label Content="City" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="12,86,0,0" x:Name="label2_Copy1" VerticalAlignment="Top" />
-                        <Label Content="State" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="12,113,0,0" x:Name="label2_Copy2" VerticalAlignment="Top" />
-                        <Label Content="Country" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="12,141,0,0" x:Name="label2_Copy" VerticalAlignment="Top" />
-                        <TextBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="125,7,0,0" Name="txtUserId" VerticalAlignment="Top" Width="178" Text="{Binding ElementName=UserGrid, Path=SelectedItem.CodigoProducto}" />
-                        <TextBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="125,35,0,0" Name="txtFirstName" VerticalAlignment="Top" Width="178" Text="{Binding ElementName=UserGrid, Path=SelectedItem.NombreProducto}" />
-                        <TextBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="125,62,0,0" Name="txtLastName" VerticalAlignment="Top" Width="178" Text="{Binding ElementName=UserGrid, Path=SelectedItem.PrecioVenta}" />
-                        <TextBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="125,88,0,0" x:Name="txtCountry" VerticalAlignment="Top" Width="178" Text="" />
-                        <TextBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="125,115,0,0" x:Name="txtSTate" VerticalAlignment="Top" Width="178" Text="" />
-                        <TextBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="125,143,0,0" x:Name="txtCity" VerticalAlignment="Top" Width="178" Text="" />
-                        <Image HorizontalAlignment="Left" Height="128" Margin="351,10,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="147" Source="{Binding ElementName=UserGrid, Path=SelectedItem.Imagen}"/>
-                        <Button Content="Update" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="536,126,0,0" Name="btnUpdate" VerticalAlignment="Top" Width="141" Command="{Binding Path=UpdateCommad}"  />
-                    </Grid>
-                </ScrollViewer>
-            </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="137*"/>
-                        <ColumnDefinition Width="629*"/>
-                    </Grid.ColumnDefinitions>
+        Title="MainWindow" Height="622" Width="1100" ResizeMode="NoResize" Background="#FF616980" UseLayoutRounding="True"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" d:DataContext="{d:DesignInstance Type=local:Producto}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        FontFamily="{DynamicResource MaterialDesignFont}" AutomationProperties.IsColumnHeader="True" SnapsToDevicePixels="True">
+    <Grid Background="#FF616980" >
+        <TabControl Height="593" VerticalAlignment="Top" Background="#FFAEBDE6" BorderBrush="{x:Null}" BorderThickness="0">
+            <TabItem Header="Productos" FontFamily="Segoe UI" BorderBrush="{x:Null}" Margin="0,-3,-10,0" BorderThickness="0" ClipToBounds="True">
+                <Grid Height="555">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFAEBDE6" Offset="0"/>
+                            <GradientStop Color="#FFC2D2FF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <StackPanel Grid.Column="0" Grid.Row="0">
-                        <TextBlock Padding="5" Text="Nombe:" FontSize="16"/>
-                        <TextBlock Padding="5" Text="Código producto:" FontSize="16"/>
-                        <TextBlock Padding="5" Text="Descripción:" FontSize="16"/>
-                        <TextBlock Padding="5" Text="Nombe:" FontSize="16"/>
-                        <TextBlock Padding="5" Text="Imagen:" FontSize="16"/>
-                    </StackPanel>
-                    <StackPanel Grid.Column="1" Grid.Row="0">
-                        <TextBlock Padding="5" Text="Skechers Ultra Flex-Free Spirits, Zapatillas Mujer" FontSize="16"/>
-                        <TextBlock Padding="5" Text="Skechers Ultra Flex-Free Spirits, Zapatillas Mujer" FontSize="16"/>
-                        <TextBlock Padding="5" Text="Skechers Ultra Flex-Free Spirits, Zapatillas Mujer" FontSize="16"/>
-                        <TextBlock Padding="5" Text="Skechers Ultra Flex-Free Spirits, Zapatillas Mujer" FontSize="16"/>
-                        <Image Source="/IMG/81VK4xavo6L._AC_UL450_SR450,320_.jpg" Height="70" HorizontalAlignment="Left" Width="auto" />
-                    </StackPanel>
-                    <Separator Margin="0,191,5,183" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-                    <StackPanel Grid.Column="0" Grid.Row="1">
-                        <TextBlock Padding="5" Text="Nombe:" FontSize="16"/>
-                        <TextBlock Padding="5" Text="Código producto:" FontSize="16"/>
-                        <TextBlock Padding="5" Text="Descripción:" FontSize="16"/>
-                        <TextBlock Padding="5" Text="Nombe:" FontSize="16"/>
-                        <TextBlock Padding="5" Text="Imagen:" FontSize="16"/>
-                    </StackPanel>
-                    <StackPanel Grid.Column="1" Grid.Row="1">
-                        <TextBlock Padding="5" Text="Skechers Ultra Flex-Free Spirits, Zapatillas Mujer" FontSize="16"/>
-                        <TextBlock Padding="5" Text="Skechers Ultra Flex-Free Spirits, Zapatillas Mujer" FontSize="16"/>
-                        <TextBlock Padding="5" Text="Skechers Ultra Flex-Free Spirits, Zapatillas Mujer" FontSize="16"/>
-                        <TextBlock Padding="5" Text="Skechers Ultra Flex-Free Spirits, Zapatillas Mujer" FontSize="16"/>
-                        <Image Source="/IMG/81VK4xavo6L._AC_UL450_SR450,320_.jpg" Height="70" HorizontalAlignment="Left" Width="auto" />
-                    </StackPanel>
+                    <ListView Name="UserGrid" Grid.Row="1" Margin="28,0,0,10"  ItemsSource="{Binding Articulos}" Height="200" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="1016" BorderBrush="{x:Null}" Foreground="Black">
+                        <ListView.View>
+                            <GridView x:Name="gridProductos">
+                                <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding NombreProducto}"  Width="Auto"/>
+                                <GridViewColumn Header="Código" DisplayMemberBinding="{Binding CodigoProducto}"  Width="Auto" />
+                                <GridViewColumn Header="CodigoVendedor" DisplayMemberBinding="{Binding CodigoVendedor}" Width="Auto" />
+                                <GridViewColumn Header="Precio" DisplayMemberBinding="{Binding PrecioVenta}" Width="Auto" />
+                                <GridViewColumn Header="Tipo IVA" DisplayMemberBinding="{Binding TipoIVA}" Width="Auto" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Label Content="Nombre:" Grid.Row="1" Height="Auto" HorizontalAlignment="Left" Margin="28,16,0,0" Name="label3" VerticalAlignment="Top" FontSize="16" Foreground="#FF535252" FontFamily="Segoe UI"  />
+                    <Label Content="Codigo Producto:" Grid.Row="1" Height="Auto" HorizontalAlignment="Left" Margin="351,258,0,0" Name="textViewCodigoProducto" VerticalAlignment="Top" FontSize="16" Foreground="#FF616980" FontFamily="Sego UI" />
+                    <Label Content="CodigoVendedor:" Grid.Row="1" Height="Auto" HorizontalAlignment="Left" Margin="351,16,0,0" Name="label2" VerticalAlignment="Top" FontSize="16" Foreground="#FF616980" FontFamily="Sego UI" />
+                    <Label Content="Coste:" Grid.Row="1" Height="Auto" HorizontalAlignment="Left" Margin="351,92,0,0" x:Name="textViewCosteProducto" VerticalAlignment="Top" FontSize="16" Foreground="#FF616980" FontFamily="Sego UI" />
+                    <Label Content="Tipo IVA:" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="351,172,0,0" x:Name="label2_Copy2" VerticalAlignment="Top" FontSize="16" Foreground="#FF616980" RenderTransformOrigin="0.3,0.5" FontFamily="Sego UI" />
+                    <Label Content="Descripción:" Grid.Row="1" Height="Auto" HorizontalAlignment="Left" Margin="28,92,0,0" x:Name="label2_Copy" VerticalAlignment="Top" FontSize="16" FontFamily="Segoe UI" />
+                    <TextBox Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="28,45,0,0" Name="editTextNombreProducto" VerticalAlignment="Top" Width="241" Text="{Binding ElementName=UserGrid, Path=SelectedItem.NombreProducto}" FontSize="16" BorderBrush="#FF4689CD" Background="#7FECECEC" FontFamily="Segoe UI" />
+                    <TextBox Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="351,45,0,0" Name="editTextCodigoVendedor" VerticalAlignment="Top" Width="240" Text="{Binding ElementName=UserGrid, Path=SelectedItem.CodigoVendedor}" FontSize="16" BorderBrush="#FF4689CD" Background="#7FECECEC" FontFamily="Segoe UI" />
+                    <TextBox Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="351,121,0,0" Name="editTextPrecio" VerticalAlignment="Top" Width="240" Text="{Binding ElementName=UserGrid, Path=SelectedItem.PrecioVenta}" FontSize="16" BorderBrush="#FF4689CD" Background="#7FECECEC" FontFamily="Segoe UI" />
+                    <TextBox Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="351,200,0,0" x:Name="editTextTipoIVA" VerticalAlignment="Top" Width="240" Text="{Binding ElementName=UserGrid, Path=SelectedItem.TipoIVA}" FontSize="16" BorderBrush="#FF4689CD" Background="#7FECECEC" FontFamily="Segoe UI" />
+                    <TextBox Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="351,287,0,0" x:Name="editTextCodigoProducto" VerticalAlignment="Top" Width="240" Text="{Binding ElementName=UserGrid, Path=SelectedItem.CodigoProducto}" FontSize="16" BorderBrush="#FF4689CD" Background="#7FECECEC" FontFamily="Segoe UI" />
+                    <TextBox Grid.Row="1" Height="195" HorizontalAlignment="Left" Margin="28,121,0,0" x:Name="editTextDescripcion" VerticalAlignment="Top" Width="240" Text="{Binding ElementName=UserGrid, Path=SelectedItem.Descripcion}" FontSize="16" BorderBrush="#FF4689CD" SelectionBrush="{x:Null}" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Background="#FFECECEC" FontFamily="Segoe UI"/>
+                    <Image HorizontalAlignment="Left" Height="271" Margin="612,45,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="324" Source="{Binding ElementName=UserGrid, Path=SelectedItem.Imagen}"/>
+                    <Button Content="Update" Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="958,45,0,0" Name="btnUpdate" VerticalAlignment="Top" Width="86" Command="{Binding Path=UpdateCommad}" />
+                    <Button Content="Update" Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="958,172,0,0" Name="buttonCrear" VerticalAlignment="Top" Width="86" Command="{Binding Path=UpdateCommad}"/>
+                    <Button Content="Eliminar" Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="958,287,0,0" Name="butonEliminar" VerticalAlignment="Top" Width="86" Command="{Binding Path=UpdateCommad}"/>
+                </Grid>
+            </TabItem>
+
+
+            <TabItem Header="Dependientes" FontFamily="Segoe UI" BorderBrush="{x:Null}" Margin="9,0,-8,0">
+                <Grid Height="555">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFAEBDE6" Offset="0"/>
+                            <GradientStop Color="#FFC2D2FF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ListView Name="DependientesGrid" Grid.Row="1" Margin="28,0,0,10"  ItemsSource="{Binding Dependientes}" Height="200" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="1014" BorderBrush="{x:Null}" Foreground="Black">
+                        <ListView.View>
+                            <GridView x:Name="gridDependientes">
+                                <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding NombreDependiente}"  Width="Auto"/>
+                                <GridViewColumn Header="Código" DisplayMemberBinding="{Binding CodigoProducto}"  Width="Auto" />
+                                <GridViewColumn Header="FechaNacimiento" DisplayMemberBinding="{Binding FechaNacimiento}" Width="Auto" />
+                                <GridViewColumn Header="Edad" DisplayMemberBinding="{Binding Edadd}" Width="Auto" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Label Content="Nombre:" Grid.Row="1" Height="Auto" HorizontalAlignment="Left" Margin="28,16,0,0" Name="textViewNombreDependiente" VerticalAlignment="Top" FontSize="16" Foreground="#FF535252" FontFamily="Segoe UI"  />
+                    <Label Content="Codigo:" Grid.Row="1" Height="Auto" HorizontalAlignment="Left" Margin="351,18,0,0" Name="textViewCodigoDependiente" VerticalAlignment="Top" FontSize="16" Foreground="#FF616980" FontFamily="Sego UI" />
+                    <Label Content="FechaNacimiento:" Grid.Row="1" Height="Auto" HorizontalAlignment="Left" Margin="28,143,0,0" Name="textViewFechaNacimiento" VerticalAlignment="Top" FontSize="16" Foreground="#FF616980" FontFamily="Sego UI" />
+                    <Label Content="Edad:" Grid.Row="1" Height="Auto" HorizontalAlignment="Left" Margin="351,145,0,0" x:Name="textViewEdad" VerticalAlignment="Top" FontSize="16" Foreground="#FF616980" FontFamily="Sego UI" />
+
+                    <TextBox Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="28,45,0,0" Name="editTextNombreDependiente" VerticalAlignment="Top" Width="241" Text="{Binding ElementName=DependientesGrid, Path=SelectedItem.NombreDependiente}" FontSize="16" BorderBrush="#FF4689CD" Background="#7FECECEC" FontFamily="Segoe UI" />
+                    <TextBox Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="28,172,0,0" Name="editTextCodigoDependiente" VerticalAlignment="Top" Width="240" Text="{Binding ElementName=DependientesGrid, Path=SelectedItem.CodigoDependiente}" FontSize="16" BorderBrush="#FF4689CD" Background="#7FECECEC" FontFamily="Segoe UI" />
+                    <TextBox Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="351,172,0,0" x:Name="editTextFechaNacimiento" VerticalAlignment="Top" Width="240" Text="{Binding ElementName=DependientesGrid, Path=SelectedItem.PrecioVenta}" FontSize="16" BorderBrush="#FF4689CD" Background="#7FECECEC" FontFamily="Segoe UI" />
+                    <TextBox Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="351,47,0,0" x:Name="editTextEdad" VerticalAlignment="Top" Width="240" Text="{Binding ElementName=DependientesGrid, Path=SelectedItem.TipoIVA}" FontSize="16" BorderBrush="#FF4689CD" Background="#7FECECEC" FontFamily="Segoe UI" />
+                    <Image HorizontalAlignment="Left" Height="273" Margin="634,45,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="284" Source="{Binding ElementName=DependientesGrid, Path=SelectedItem.Imagen}"/>
+                    <Button Content="Update" Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="957,47,0,0" Name="btnUpdateDependiente" VerticalAlignment="Top" Width="85" Command="{Binding Path=UpdateCommad}" />
+                    <Button Content="Crear" Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="957,174,0,0" Name="buttonCrearDependiente" VerticalAlignment="Top" Width="85" Command="{Binding Path=UpdateCommad}"/>
+                    <Button Content="Eliminar" Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="957,289,0,0" Name="butonEliminarDependiente" VerticalAlignment="Top" Width="85" Command="{Binding Path=UpdateCommad}"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Ventas" FontFamily="Segoe UI" BorderBrush="{x:Null}" Margin="0,-3,-10,0" BorderThickness="0" ClipToBounds="True">
+                <Grid Height="555">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFAEBDE6" Offset="0"/>
+                            <GradientStop Color="#FFC2D2FF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ListView Name="UserGrid" Grid.Row="1" Margin="28,0,0,10"  ItemsSource="{Binding Articulos}" Height="200" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="1016" BorderBrush="{x:Null}" Foreground="Black">
+                        <ListView.View>
+                            <GridView x:Name="gridProductos">
+                                <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding NombreProducto}"  Width="Auto"/>
+                                <GridViewColumn Header="Código" DisplayMemberBinding="{Binding CodigoProducto}"  Width="Auto" />
+                                <GridViewColumn Header="CodigoVendedor" DisplayMemberBinding="{Binding CodigoVendedor}" Width="Auto" />
+                                <GridViewColumn Header="Precio" DisplayMemberBinding="{Binding PrecioVenta}" Width="Auto" />
+                                <GridViewColumn Header="Tipo IVA" DisplayMemberBinding="{Binding TipoIVA}" Width="Auto" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Label Content="Nombre:" Grid.Row="1" Height="Auto" HorizontalAlignment="Left" Margin="28,16,0,0" Name="label3" VerticalAlignment="Top" FontSize="16" Foreground="#FF535252" FontFamily="Segoe UI"  />
+                    <Label Content="Codigo Producto:" Grid.Row="1" Height="Auto" HorizontalAlignment="Left" Margin="351,258,0,0" Name="textViewCodigoProducto" VerticalAlignment="Top" FontSize="16" Foreground="#FF616980" FontFamily="Sego UI" />
+                    <Label Content="CodigoVendedor:" Grid.Row="1" Height="Auto" HorizontalAlignment="Left" Margin="351,16,0,0" Name="label2" VerticalAlignment="Top" FontSize="16" Foreground="#FF616980" FontFamily="Sego UI" />
+                    <Label Content="Coste:" Grid.Row="1" Height="Auto" HorizontalAlignment="Left" Margin="351,92,0,0" x:Name="textViewCosteProducto" VerticalAlignment="Top" FontSize="16" Foreground="#FF616980" FontFamily="Sego UI" />
+                    <Label Content="Tipo IVA:" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="351,172,0,0" x:Name="label2_Copy2" VerticalAlignment="Top" FontSize="16" Foreground="#FF616980" RenderTransformOrigin="0.3,0.5" FontFamily="Sego UI" />
+                    <Label Content="Descripción:" Grid.Row="1" Height="Auto" HorizontalAlignment="Left" Margin="28,92,0,0" x:Name="label2_Copy" VerticalAlignment="Top" FontSize="16" FontFamily="Segoe UI" />
+                    <TextBox Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="28,45,0,0" Name="editTextNombreProducto" VerticalAlignment="Top" Width="241" Text="{Binding ElementName=UserGrid, Path=SelectedItem.NombreProducto}" FontSize="16" BorderBrush="#FF4689CD" Background="#7FECECEC" FontFamily="Segoe UI" />
+                    <TextBox Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="351,45,0,0" Name="editTextCodigoVendedor" VerticalAlignment="Top" Width="240" Text="{Binding ElementName=UserGrid, Path=SelectedItem.CodigoVendedor}" FontSize="16" BorderBrush="#FF4689CD" Background="#7FECECEC" FontFamily="Segoe UI" />
+                    <TextBox Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="351,121,0,0" Name="editTextPrecio" VerticalAlignment="Top" Width="240" Text="{Binding ElementName=UserGrid, Path=SelectedItem.PrecioVenta}" FontSize="16" BorderBrush="#FF4689CD" Background="#7FECECEC" FontFamily="Segoe UI" />
+                    <TextBox Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="351,200,0,0" x:Name="editTextTipoIVA" VerticalAlignment="Top" Width="240" Text="{Binding ElementName=UserGrid, Path=SelectedItem.TipoIVA}" FontSize="16" BorderBrush="#FF4689CD" Background="#7FECECEC" FontFamily="Segoe UI" />
+                    <TextBox Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="351,287,0,0" x:Name="editTextCodigoProducto" VerticalAlignment="Top" Width="240" Text="{Binding ElementName=UserGrid, Path=SelectedItem.CodigoProducto}" FontSize="16" BorderBrush="#FF4689CD" Background="#7FECECEC" FontFamily="Segoe UI" />
+                    <TextBox Grid.Row="1" Height="195" HorizontalAlignment="Left" Margin="28,121,0,0" x:Name="editTextDescripcion" VerticalAlignment="Top" Width="240" Text="{Binding ElementName=UserGrid, Path=SelectedItem.Descripcion}" FontSize="16" BorderBrush="#FF4689CD" SelectionBrush="{x:Null}" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Background="#FFECECEC" FontFamily="Segoe UI"/>
+                    <Image HorizontalAlignment="Left" Height="271" Margin="612,45,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="324" Source="{Binding ElementName=UserGrid, Path=SelectedItem.Imagen}"/>
+                    <Button Content="Update" Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="958,45,0,0" Name="btnUpdate" VerticalAlignment="Top" Width="86" Command="{Binding Path=UpdateCommad}" />
+                    <Button Content="Update" Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="958,172,0,0" Name="buttonCrear" VerticalAlignment="Top" Width="86" Command="{Binding Path=UpdateCommad}"/>
+                    <Button Content="Eliminar" Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="958,287,0,0" Name="butonEliminar" VerticalAlignment="Top" Width="86" Command="{Binding Path=UpdateCommad}"/>
                 </Grid>
             </TabItem>
         </TabControl>

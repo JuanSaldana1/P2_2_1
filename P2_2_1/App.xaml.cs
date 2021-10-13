@@ -8,8 +8,8 @@ namespace P2_2_1 {
         protected override void OnStartup(StartupEventArgs e) {
             base.OnStartup(e);
             MainWindow window = new MainWindow();
-            ProductoVistaModelo VM = new ProductoVistaModelo();
-            window.DataContext = VM;
+            ProductoVistaModelo productoVistaModelo = new ProductoVistaModelo();
+            window.DataContext = productoVistaModelo;
             window.Show();
         }
     }
