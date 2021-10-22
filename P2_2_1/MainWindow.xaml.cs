@@ -9,5 +9,9 @@ namespace P2_2_1 {
         public MainWindow() {
             InitializeComponent();
         }
+
+        private void TabItem_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e) {
+
+        }
     }
 }

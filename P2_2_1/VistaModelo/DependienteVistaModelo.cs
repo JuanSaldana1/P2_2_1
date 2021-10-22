@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Windows.Input;
 
 namespace P2_2_1 {
-    class DependienteVistaModelo {
-        private IList<Dependiente> _listaDependientes;
+    internal class DependienteVistaModelo {
         public DependienteVistaModelo() {
-            _listaDependientes = new List<Dependiente> {
+            Dependientes = new List<Dependiente> {
                 new Dependiente{NombreDependiente = "Pepe", CodigoDependiente = 0001, FechaNacimiento = "1995/25/3", Edad = 22, Imagen = "https://images-eu.ssl-images-amazon.com/images/I/81VK4xavo6L._AC_UL450_SR450,320_.jpg"},
                 new Dependiente{NombreDependiente = "Pepe", CodigoDependiente = 0002, FechaNacimiento = "1989/25/3", Edad = 22, Imagen = "https://images-eu.ssl-images-amazon.com/images/I/81VK4xavo6L._AC_UL450_SR450,320_.jpg"},
                 new Dependiente{NombreDependiente = "Pepe", CodigoDependiente = 0003, FechaNacimiento = "1991/25/3", Edad = 22, Imagen = "https://images-eu.ssl-images-amazon.com/images/I/81VK4xavo6L._AC_UL450_SR450,320_.jpg"},
@@ -15,21 +14,18 @@ namespace P2_2_1 {
             };
         }
 
-        public IList<Dependiente> Dependientes {
-            get { return _listaDependientes; }
-            set { _listaDependientes = value; }
-        }
+        public IList<Dependiente> Dependientes { get; set; }
 
         private ICommand mUpdater;
         public ICommand UpdateCommand {
             get {
-                if (mUpdater == null)
+                if (mUpdater == null) {
                     mUpdater = new Updater();
+                }
+
                 return mUpdater;
             }
-            set {
-                mUpdater = value;
-            }
+            set => mUpdater = value;
         }
 
         private class Updater : ICommand {
