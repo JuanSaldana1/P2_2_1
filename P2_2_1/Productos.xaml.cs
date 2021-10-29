@@ -20,6 +20,7 @@ namespace P2_2_1 {
     public partial class Productos : Page {
         public Productos() {
             InitializeComponent();
+            DataContext = new ProductoVistaModelo();
         }
     }
 }

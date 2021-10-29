@@ -8,10 +8,8 @@ namespace P2_2_1 {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
-        }
-
-        private void TabItem_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e) {
-
+            paginaProductos.Content = new Productos();
+            //paginaDependientes.Content
         }
     }
 }
