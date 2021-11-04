@@ -9,7 +9,7 @@ namespace P2_2_1 {
         public MainWindow() {
             InitializeComponent();
             paginaProductos.Content = new Productos();
-            //paginaDependientes.Content
+            userControlVentas.Content = new VentasUserControl();
         }
     }
 }

@@ -24,7 +24,7 @@
             </TabItem>
 
             <TabItem Header="Ventas" FontFamily="Segoe UI" BorderBrush="{x:Null}" Margin="16,0,-17,0" BorderThickness="0" ClipToBounds="True">
-                <Frame Name="paginaVentas"/>
+                <Frame Name="userControlVentas"/>
             </TabItem>
         </TabControl>
     </Grid>
