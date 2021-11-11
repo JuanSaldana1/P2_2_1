@@ -94,15 +94,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Productos.xaml.cs">
-      <DependentUpon>Productos.xaml</DependentUpon>
+    <Compile Include="DependientesUserControl.xaml.cs">
+      <DependentUpon>DependientesUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\Dependiente.cs" />
     <Compile Include="Modelo\Venta.cs" />
+    <Compile Include="ProductosUserControl.xaml.cs">
+      <DependentUpon>ProductosUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VentasUserControl.xaml.cs">
       <DependentUpon>VentasUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VistaModelo\DependienteVistaModelo.cs" />
     <Compile Include="VistaModelo\VentaVistaModelo.cs" />
     <Compile Include="VistaModelo\ProductoVistaModelo.cs" />
+    <Page Include="DependientesUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -115,7 +124,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Productos.xaml">
+    <Page Include="ProductosUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

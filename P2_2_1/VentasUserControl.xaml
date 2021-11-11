@@ -31,11 +31,13 @@
                 <GradientStop Color="#FFC2D2FF" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+
         <ListView
             Name="ventasGrid"
             Grid.Row="1"
@@ -219,7 +221,6 @@
             Grid.Row="1"
             Margin="564,102,193,298"
             Background="#7FECECEC"
-            d:ItemsSource="{d:SampleData ItemCount=5}"
             SelectionChanged="MyListView_SelectionChanged">
 
             <ListView.ItemTemplate>

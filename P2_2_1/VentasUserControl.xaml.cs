@@ -27,7 +27,7 @@ namespace P2_2_1 {
         }
 
         private void MyListView_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-
+            MyListView.DataContext = new VentaVistaModelo();
         }
     }
 }

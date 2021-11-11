@@ -1,15 +1,14 @@
-﻿<Page x:Class="P2_2_1.Productos"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:P2_2_1"
-      mc:Ignorable="d"
-      d:DesignHeight="546" d:DesignWidth="1110"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      Title="Productos">
+﻿<UserControl x:Class="P2_2_1.ProductosUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:P2_2_1"
+             mc:Ignorable="d"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="546" d:DesignWidth="1110">
 
-    <Grid Height="555">
+    <Grid Height="546">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FFAEBDE6" Offset="0"/>
@@ -18,61 +17,16 @@
         </Grid.Background>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <ListView
-            d:DataContext="{d:DesignInstance Type=local:Producto}"
-            Name="UserGrid"
-            Grid.Row="1"
-            Margin="28,0,0,10"
-            ItemsSource="{Binding Articulos}"
-            Height="200"
-            VerticalAlignment="Bottom"
-            HorizontalAlignment="Left"
-            Width="1038"
-            BorderBrush="{x:Null}"
-            Foreground="Black" d:ItemsSource="{d:SampleData ItemCount=5}">
-
-            <ListView.View>
-                <GridView x:Name="gridProductos">
-                    <GridViewColumn
-                        Header="Nombre"
-                        DisplayMemberBinding="{Binding NombreProducto}"
-                        Width="Auto"/>
-
-                    <GridViewColumn
-                        Header="Código"
-                        DisplayMemberBinding="{Binding CodigoProducto}"
-                        Width="Auto"/>
-
-                    <GridViewColumn
-                        Header="CodigoVendedor"
-                        DisplayMemberBinding="{Binding CodigoVendedor}"
-                        Width="Auto" />
-
-                    <GridViewColumn
-                        Header="Precio"
-                        DisplayMemberBinding="{Binding PrecioVenta}"
-                        Width="Auto"/>
-
-                    <GridViewColumn
-                        Header="Tipo IVA"
-                        DisplayMemberBinding="{Binding TipoIVA}"
-                        Width="Auto"/>
-
-                </GridView>
-            </ListView.View>
-        </ListView>
         <Label
             Content="Nombre:"
             Grid.Row="1"
             Height="Auto"
             HorizontalAlignment="Left"
             Margin="28,16,0,0"
-            Name="label3"
+            Name="label1"
             VerticalAlignment="Top"
             FontSize="16"
             Foreground="#FF535252"
@@ -88,7 +42,7 @@
             VerticalAlignment="Top"
             FontSize="16"
             Foreground="#FF535252"
-            FontFamily="Sego UI" />
+            FontFamily="Sego UI"/>
 
         <Label
             Content="Descripción:"
@@ -97,7 +51,7 @@
             HorizontalAlignment="Left"
             Margin="28,92,0,0"
             Foreground="#FF535252"
-            x:Name="label2_Copy"
+            x:Name="label3"
             VerticalAlignment="Top"
             FontSize="16"
             FontFamily="Segoe UI"/>
@@ -146,10 +100,12 @@
             Margin="28,45,0,0"
             Name="editTextNombreProducto"
             VerticalAlignment="Top"
-            Width="241" Text="{Binding ElementName=UserGrid, Path=SelectedItem.NombreProducto}"
+            Width="241"
+            Text="{Binding ElementName=UserGrid, Path=SelectedItem.NombreProducto}"
             FontSize="16"
             BorderBrush="#FF4689CD"
-            Background="#7FECECEC" FontFamily="Segoe UI"/>
+            Background="#7FECECEC"
+            FontFamily="Segoe UI"/>
 
         <TextBox
             Grid.Row="1"
@@ -227,7 +183,7 @@
             Source="{Binding ElementName=UserGrid, Path=SelectedItem.Imagen}"/>
 
         <Button
-            Content="Update"
+            Content="Actualizar"
             Grid.Row="1"
             Height="29"
             HorizontalAlignment="Left"
@@ -238,7 +194,7 @@
             Command="{Binding Path=UpdateCommad}"/>
 
         <Button
-            Content="Crear"
+            Content="Añadir"
             Grid.Row="1"
             Height="29"
             HorizontalAlignment="Left"
@@ -246,7 +202,8 @@
             Name="buttonCrear"
             VerticalAlignment="Top"
             Width="86"
-            Command="{Binding Path=UpdateCommad}" Click="buttonCrear_Click"/>
+            Command="{Binding Path=UpdateCommad}"
+            />
 
         <Button
             Content="Eliminar"
@@ -259,5 +216,49 @@
             Width="86"
             Command="{Binding Path=UpdateCommad}"/>
 
+        <ListView
+            d:DataContext="{d:DesignInstance Type=local:Producto}"
+            Name="UserGrid"
+            Grid.Row="1"
+            Margin="28,0,0,10"
+            ItemsSource="{Binding Articulos}"
+            Height="200"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Left"
+            Width="1038"
+            BorderBrush="{x:Null}"
+            Foreground="Black" d:ItemsSource="{d:SampleData ItemCount=5}">
+
+            <ListView.View>
+                <GridView x:Name="gridProductos">
+                    <GridViewColumn
+                        Header="Nombre"
+                        DisplayMemberBinding="{Binding NombreProducto}"
+                        Width="Auto"/>
+
+                    <GridViewColumn
+                        Header="Código"
+                        DisplayMemberBinding="{Binding CodigoProducto}"
+                        Width="Auto"/>
+
+                    <GridViewColumn
+                        Header="CodigoVendedor"
+                        DisplayMemberBinding="{Binding CodigoVendedor}"
+                        Width="Auto" />
+
+                    <GridViewColumn
+                        Header="Precio"
+                        DisplayMemberBinding="{Binding PrecioVenta}"
+                        Width="Auto"/>
+
+                    <GridViewColumn
+                        Header="Tipo IVA"
+                        DisplayMemberBinding="{Binding TipoIVA}"
+                        Width="Auto"/>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+
     </Grid>
-</Page>
+</UserControl>

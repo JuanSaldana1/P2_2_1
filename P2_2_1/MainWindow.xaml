@@ -16,11 +16,11 @@
     <Grid Background="#FF616980" >
         <TabControl Height="593" VerticalAlignment="Top" Background="#FFAEBDE6" BorderBrush="{x:Null}" BorderThickness="0">
             <TabItem Header="Productos" FontFamily="Segoe UI" BorderBrush="{x:Null}" Margin="0,-3,-10,0" BorderThickness="0" ClipToBounds="True">
-                <Frame Name="paginaProductos"/>
+                <Frame Name="userControlProductos"/>
             </TabItem>
 
             <TabItem Header="Dependientes" FontFamily="Segoe UI" BorderBrush="{x:Null}" Margin="9,0,-17,0" BorderThickness="0" ClipToBounds="True">
-                <Frame Name="paginaDependientes"/>
+                <Frame Name="userControlDependientes"/>
             </TabItem>
 
             <TabItem Header="Ventas" FontFamily="Segoe UI" BorderBrush="{x:Null}" Margin="16,0,-17,0" BorderThickness="0" ClipToBounds="True">

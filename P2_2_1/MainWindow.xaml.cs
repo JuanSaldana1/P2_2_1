@@ -8,7 +8,8 @@ namespace P2_2_1 {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
-            paginaProductos.Content = new Productos();
+            userControlProductos.Content = new ProductosUserControl();
+            userControlDependientes.Content = new DependientesUserControl();
             userControlVentas.Content = new VentasUserControl();
         }
     }
