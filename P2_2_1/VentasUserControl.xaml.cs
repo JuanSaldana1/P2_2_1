@@ -22,6 +22,12 @@ namespace P2_2_1 {
         public VentasUserControl() {
             InitializeComponent();
             DataContext = new VentaVistaModelo();
+            VentaVistaModelo venta = new VentaVistaModelo();
+            venta.Hola();
+        }
+
+        private void MyListView_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
         }
     }
 }

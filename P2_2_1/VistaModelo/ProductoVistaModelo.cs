@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace P2_2_1 {
     class ProductoVistaModelo {
-        Producto producto = new Producto();
+        readonly Producto producto = new Producto();
         private IList<Producto> _listaProductos;
         public ProductoVistaModelo() {
             _listaProductos = new List<Producto> {
@@ -54,7 +54,9 @@ namespace P2_2_1 {
                 return true;
             }
 
+#pragma warning disable CS0067 // El evento 'ProductoVistaModelo.Updater.CanExecuteChanged' nunca se usa
             public event EventHandler CanExecuteChanged;
+#pragma warning restore CS0067 // El evento 'ProductoVistaModelo.Updater.CanExecuteChanged' nunca se usa
 
             public void Execute(object parameter) {
 
@@ -69,7 +71,9 @@ namespace P2_2_1 {
                 return true;
             }
 
+#pragma warning disable CS0067 // El evento 'ProductoVistaModelo.Deleter.CanExecuteChanged' nunca se usa
             public event EventHandler CanExecuteChanged;
+#pragma warning restore CS0067 // El evento 'ProductoVistaModelo.Deleter.CanExecuteChanged' nunca se usa
 
             public void Execute(object parameter) {
 

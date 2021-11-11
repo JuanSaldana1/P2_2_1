@@ -14,6 +14,7 @@ namespace P2_2_1.Modelo {
         private bool pagoPorEfectivo;
         private string formaPago;
         private int numeroTarjeta;
+        private List<Producto> listaProductos;
 
         public string CodigoVenta {
             get => codigoVenta;
@@ -73,7 +74,8 @@ namespace P2_2_1.Modelo {
             }
         }
 
-        public List<Producto> ListaProductos { get; internal set; }
+
+        internal List<Producto> ListaProductos { get => listaProductos; set => listaProductos = value; }
 
         public string DevuelveFormaPago() {
             if (pagoPorEfectivo) {

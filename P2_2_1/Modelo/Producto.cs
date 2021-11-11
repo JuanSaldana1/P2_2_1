@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel;
-
+using System.Runtime.CompilerServices;
 
 namespace P2_2_1 {
     class Producto : INotifyPropertyChanged {
@@ -116,6 +116,20 @@ namespace P2_2_1 {
         private void OnPropertyChanged(string propertyName) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        protected bool SetProperty<T>(ref T field, T newValue, [CallerMemberName] string propertyName = null) {
+            if (!Equals(field, newValue)) {
+                field = newValue;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+                return true;
+            }
+
+            return false;
+        }
+
+        private System.Collections.IEnumerable ventas;
+
+        public System.Collections.IEnumerable Ventas { get => ventas; set => SetProperty(ref ventas, value); }
         #endregion
     }
 }

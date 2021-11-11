@@ -1,18 +1,26 @@
-﻿<UserControl x:Class="P2_2_1.VentasUserControl"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:P2_2_1"
-             mc:Ignorable="d" 
-             d:DesignHeight="662" d:DesignWidth="1110" Background="#FF616980" UseLayoutRounding="True"
-        d:DataContext="{d:DesignInstance Type=local:Producto}"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        TextElement.FontWeight="Regular"
-        TextElement.FontSize="13"
-        TextOptions.TextFormattingMode="Ideal"
-        TextOptions.TextRenderingMode="Auto"
-        FontFamily="{DynamicResource MaterialDesignFont}" AutomationProperties.IsColumnHeader="True" SnapsToDevicePixels="True">
+﻿<UserControl
+    x:Class="P2_2_1.VentasUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:local="clr-namespace:P2_2_1"
+    mc:Ignorable="d" 
+    d:DesignHeight="662"
+    d:DesignWidth="1110"
+    Background="#FF616980"
+    UseLayoutRounding="True"
+    d:DataContext="{d:DesignInstance Type=local:Producto}"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextElement.FontWeight="Regular"
+    TextElement.FontSize="13"
+    TextOptions.TextFormattingMode="Ideal"
+    TextOptions.TextRenderingMode="Auto"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+    AutomationProperties.IsColumnHeader="True"
+    SnapsToDevicePixels="True">
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -28,31 +36,235 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ListView d:DataContext="{d:DesignInstance Type=local:VentasUserControl}" Name="ventasGrid" Grid.Row="1" Margin="28,0,-266,10"  ItemsSource="{Binding Ventas}" Height="200" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="1038" BorderBrush="{x:Null}" Foreground="Black">
+        <ListView
+            Name="ventasGrid"
+            Grid.Row="1"
+            Margin="28,0,-266,10"
+            ItemsSource="{Binding Ventas}"
+            Height="200"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Left"
+            Width="1038" BorderBrush="{x:Null}"
+            Foreground="Black"
+            d:ItemsSource="{d:SampleData ItemCount=5}">
+
             <ListView.View>
                 <GridView x:Name="gridVentas">
-                    <GridViewColumn Header="Código" DisplayMemberBinding="{Binding CodigoVenta}"  Width="Auto"/>
-                    <GridViewColumn Header="Fecha" DisplayMemberBinding="{Binding FechaPedido}"  Width="Auto" />
-                    <GridViewColumn Header="Coste" DisplayMemberBinding="{Binding CostePedido}" Width="Auto" />
-                    <GridViewColumn Header="Método de pago" DisplayMemberBinding="{Binding FormaPago}" Width="Auto" />
-                    <GridViewColumn Header="Número de tarjeta" DisplayMemberBinding="{Binding NumeroTarjeta}" Width="Auto" />
+                    <GridViewColumn
+                        Header="Código"
+                        DisplayMemberBinding="{Binding CodigoVenta}"
+                        Width="Auto"/>
+
+                    <GridViewColumn
+                        Header="Fecha"
+                        DisplayMemberBinding="{Binding FechaPedido}"
+                        Width="Auto"/>
+
+                    <GridViewColumn
+                        Header="Coste"
+                        DisplayMemberBinding="{Binding CostePedido}"
+                        Width="Auto"/>
+
+                    <GridViewColumn
+                        Header="Método de pago"
+                        DisplayMemberBinding="{Binding FormaPago}"
+                        Width="Auto"/>
+
+                    <GridViewColumn
+                        Header="Número de tarjeta"
+                        DisplayMemberBinding="{Binding NumeroTarjeta}"
+                        Width="Auto"/>
+
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label Content="Código:" Grid.Row="1" Height="Auto" HorizontalAlignment="Left" Margin="28,16,0,0" Name="label3" VerticalAlignment="Top" FontSize="16" Foreground="#FF535252" FontFamily="Segoe UI"  />
-        <Label Content="Fecha:" Grid.Row="1" Height="Auto" HorizontalAlignment="Left" Margin="28,102,0,0" Name="label2" VerticalAlignment="Top" FontSize="16" Foreground="#FF616980" FontFamily="Sego UI" />
-        <Label Content="Lista productos:" Grid.Row="1" Height="Auto" HorizontalAlignment="Left" Margin="667,129,0,0" x:Name="label2_Copy" VerticalAlignment="Top" FontSize="16" FontFamily="Segoe UI" />
-        <Label Content="Coste:" Grid.Row="1" Height="Auto" HorizontalAlignment="Left" Margin="28,186,0,0" x:Name="textViewCosteVenta" VerticalAlignment="Top" FontSize="16" Foreground="#FF616980" FontFamily="Sego UI" />
-        <Label Content="Número tarjeta:" Grid.Row="1" Height="Auto" HorizontalAlignment="Left" Margin="144,337,0,0" Name="textViewCodigoProducto" VerticalAlignment="Top" FontSize="16" Foreground="#FF616980" FontFamily="Sego UI" />
-        <TextBox Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="28,45,0,0" Name="editTextCódigo" VerticalAlignment="Top" Width="241" Text="{Binding ElementName=ventasGrid, Path=SelectedItem.CodigoVenta}" FontSize="16" BorderBrush="#FF4689CD" Background="#7FECECEC" FontFamily="Segoe UI" />
-        <TextBox Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="28,129,0,0" Name="editTextFecha" VerticalAlignment="Top" Width="240" Text="{Binding ElementName=ventasGrid, Path=SelectedItem.FechaPedido}" FontSize="16" BorderBrush="#FF4689CD" Background="#7FECECEC" FontFamily="Segoe UI" />
-        <TextBox Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="28,217,0,0" Name="editTextCoste" VerticalAlignment="Top" Width="240" Text="{Binding ElementName=ventasGrid, Path=SelectedItem.CostePedido}" FontSize="16" BorderBrush="#FF4689CD" Background="#7FECECEC" FontFamily="Segoe UI" />
-        <RadioButton Content="Tarjeta" HorizontalAlignment="Left" Margin="28,328,0,0" Grid.Row="1" VerticalAlignment="Top" IsChecked="{Binding ElementName=ventasGrid, Path=SelectedItem.PagoPorTarjeta}"/>
-        <RadioButton Content="Efectivo" HorizontalAlignment="Left" Margin="28,351,0,0" Grid.Row="1" VerticalAlignment="Top" IsChecked="{Binding ElementName=ventasGrid, Path=SelectedItem.PagoPorEfectivo}"/>
-        <TextBox Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="268,335,0,0" x:Name="editTextNumeroTarjeta" VerticalAlignment="Top" Width="240" Text="{Binding ElementName=ventasGrid, Path=SelectedItem.NumeroTarjeta}" FontSize="16" BorderBrush="#FF4689CD" Background="#7FECECEC" FontFamily="Segoe UI" />
-        <!--<TextBox Grid.Row="1" Height="195" HorizontalAlignment="Left" Margin="667,181,0,0" x:Name="editTextListaProductos" VerticalAlignment="Top" Width="240" Text="{Binding ElementName=ventasGrid, Path=SelectedItem.ListaProductos}" FontSize="16" BorderBrush="#FF4689CD" SelectionBrush="{x:Null}" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Background="#FFECECEC" FontFamily="Segoe UI" TextChanged="editTextDescripcion_TextChanged"/>-->
-        <Button Content="Comprar" Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="966,45,-252,0" Name="btnUpdate" VerticalAlignment="Top" Width="86" Command="{Binding Path=UpdateCommad}" />
-        <Button Content="Guardar" Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="966,172,-252,0" Name="buttonCrear" VerticalAlignment="Top" Width="86" Command="{Binding Path=UpdateCommad}"/>
-        <Button Content="Borrar" Grid.Row="1" Height="29" HorizontalAlignment="Left" Margin="966,287,-252,0" Name="butonEliminar" VerticalAlignment="Top" Width="86" Command="{Binding Path=UpdateCommad}"/>
+
+        <Label
+            Content="Código:"
+            Grid.Row="1"
+            Height="Auto"
+            HorizontalAlignment="Left"
+            Margin="28,16,0,0"
+            Name="label3"
+            VerticalAlignment="Top"
+            FontSize="16"
+            Foreground="#FF535252"
+            FontFamily="Segoe UI"/>
+
+        <Label
+            Content="Fecha:"
+            Grid.Row="1"
+            Height="Auto"
+            HorizontalAlignment="Left"
+            Margin="28,102,0,0"
+            Name="label2"
+            VerticalAlignment="Top"
+            FontSize="16"
+            Foreground="#FF535252"
+            FontFamily="Sego UI"/>
+
+        <Label
+            Content="Lista productos:"
+            Grid.Row="1"
+            Height="Auto"
+            HorizontalAlignment="Left"
+            Margin="564,68,0,0"
+            x:Name="label2_Copy"
+            VerticalAlignment="Top"
+            FontSize="16"
+            Foreground="#FF535252"
+            FontFamily="Segoe UI"/>
+
+        <Label
+            Content="Coste:"
+            Grid.Row="1"
+            Height="Auto"
+            HorizontalAlignment="Left"
+            Margin="28,186,0,0"
+            x:Name="textViewCosteVenta"
+            VerticalAlignment="Top"
+            FontSize="16"
+            Foreground="#FF535252"
+            FontFamily="Sego UI"/>
+
+        <Label
+            Content="Número tarjeta:"
+            Grid.Row="1"
+            Height="Auto"
+            HorizontalAlignment="Left"
+            Margin="150,324,0,0"
+            Name="textViewCodigoProducto"
+            VerticalAlignment="Top"
+            FontSize="16"
+            Foreground="#FF535252"
+            FontFamily="Sego UI"/>
+
+        <TextBox
+            Grid.Row="1"
+            Height="29"
+            HorizontalAlignment="Left"
+            Margin="28,45,0,0"
+            Name="editTextCódigo"
+            VerticalAlignment="Top"
+            Width="241"
+            Text="{Binding ElementName=ventasGrid, Path=SelectedItem.CodigoVenta}"
+            FontSize="16"
+            BorderBrush="#FF4689CD"
+            Background="#7FECECEC"
+            FontFamily="Segoe UI"/>
+
+        <DatePicker
+            Grid.Row="1"
+            HorizontalAlignment="Left"
+            Margin="28,129,0,0"
+            Name="editTextFecha"
+            VerticalAlignment="Top"
+            Width="240"
+            Text="{Binding ElementName=ventasGrid, Path=SelectedItem.FechaPedido}"
+            FontSize="16"
+            BorderBrush="#FF4689CD"
+            Background="#7FECECEC"
+            FontFamily="Segoe UI"/>
+
+        <TextBox
+            Grid.Row="1"
+            Height="29"
+            HorizontalAlignment="Left"
+            Margin="28,217,0,0"
+            Name="editTextCoste"
+            VerticalAlignment="Top"
+            Width="240"
+            Text="{Binding ElementName=ventasGrid, Path=SelectedItem.CostePedido}"
+            FontSize="16"
+            BorderBrush="#FF4689CD"
+            Background="#7FECECEC"
+            materialDesign:TextFieldAssist.PrefixText="€"
+            materialDesign:TextFieldAssist.SuffixText=""
+            FontFamily="Segoe UI"/>
+
+        <RadioButton
+            Content="Tarjeta"
+            HorizontalAlignment="Left"
+            Margin="34,315,0,0"
+            Grid.Row="1"
+            VerticalAlignment="Top"
+            IsChecked="{Binding ElementName=ventasGrid, Path=SelectedItem.PagoPorTarjeta}"/>
+
+        <RadioButton
+            Content="Efectivo"
+            HorizontalAlignment="Left"
+            Margin="34,338,0,0"
+            Grid.Row="1"
+            VerticalAlignment="Top"
+            IsChecked="{Binding ElementName=ventasGrid, Path=SelectedItem.PagoPorEfectivo}"/>
+
+        <TextBox
+            Grid.Row="1"
+            Height="29"
+            HorizontalAlignment="Left"
+            Margin="274,322,0,0"
+            x:Name="editTextNumeroTarjeta"
+            VerticalAlignment="Top"
+            Width="240"
+            Text="{Binding ElementName=ventasGrid, Path=SelectedItem.NumeroTarjeta}"
+            FontSize="16"
+            BorderBrush="#FF4689CD"
+            Background="#7FECECEC"
+            MaxLength="12"
+            FontFamily="Segoe UI"/>
+
+        <ListView
+            x:Name="MyListView"
+            ItemsSource="{Binding ElementName=ventasGrid, Path=SelectedItem.ListaProductos}"
+            Grid.Row="1"
+            Margin="564,102,193,298"
+            Background="#7FECECEC"
+            d:ItemsSource="{d:SampleData ItemCount=5}"
+            SelectionChanged="MyListView_SelectionChanged">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" >
+                        <Image Source="{Binding Path=SelectedItem.Imagen}" Width="50" Height="50" Stretch="Fill"/>
+                        <TextBlock Text="{Binding ElementName=ventasGrid, Path=SelectedItem.listaProductos.NombreProducto}"/>
+                        <!--<TextBlock Text=" "/>
+                        <TextBlock Text="{Binding Apellido}"></TextBlock>-->
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button
+            Content="Comprar"
+            Grid.Row="1"
+            Height="29"
+            HorizontalAlignment="Left"
+            Margin="966,45,-252,0"
+            Name="btnUpdate"
+            VerticalAlignment="Top"
+            Width="86"
+            Command="{Binding Path=UpdateCommad}"/>
+        <Button
+            Content="Guardar"
+            Grid.Row="1"
+            Height="29"
+            HorizontalAlignment="Left"
+            Margin="966,172,-252,0"
+            Name="buttonCrear"
+            VerticalAlignment="Top"
+            Width="86"
+            Command="{Binding Path=UpdateCommad}"/>
+
+        <Button
+            Content="Borrar"
+            Grid.Row="1"
+            Height="29"
+            HorizontalAlignment="Left"
+            Margin="966,287,-252,0"
+            Name="butonEliminar"
+            VerticalAlignment="Top"
+            Width="86"
+            Command="{Binding Path=UpdateCommad}"/>
+
     </Grid>
 </UserControl>
